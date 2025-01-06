@@ -1,0 +1,48 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f6f5f4; // Coffee color background
+}
+
+.content {
+  // display: flex;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 550px;
+  background-color: rgb(236, 236, 227);
+  border-radius: 5%;
+}
+
+
+.btn-admin{
+  background-color: #452d1b; // Coffee color for buttons
+  color: white;
+  border: black;
+  padding: 10px 30px;
+  margin-top: 200px;
+  margin-right: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.btn-order{
+  background-color: #452d1b; // Coffee color for buttons
+  color: white;
+  border: black;
+  margin-top: 200px;
+  margin-left: 20px;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
+
+button:hover {
+  background-color: #5a3d2b; // Darker coffee color on hover
+}
