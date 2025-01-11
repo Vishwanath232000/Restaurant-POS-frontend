@@ -11,5 +11,12 @@ import { MenuPageComponent } from '../menu-page/menu-page.component';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  ngOnInit() {
+    console.log('LoginComponent initialized');
+  }
+
+  ngOnDestroy() {
+    console.log('LoginComponent destroyed');
+  }
 
 }

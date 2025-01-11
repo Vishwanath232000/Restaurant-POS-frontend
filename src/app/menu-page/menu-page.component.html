@@ -1,1 +1,21 @@
+<div>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+  </nav>
+
+  <button class="btn-back" routerLink="/">Back</button>
+
+
+  <main class="menu">
+    <div class="menu-content">
+      <div *ngFor="let item of menuData" class="item-container">
+        <img [src]="'data:image/jpeg;base64,' + item.item_image" alt="Base64 Image" />
+        <div class="item-name">{{ item.item_name }}</div>
+        <div class="item-description">{{ item.item_description }}</div>
+        <div class="item-price">{{ item.item_price }}</div>
+        <button class="add-to-cart">Add to cart</button>
+      </div>
+    </div>
+  </main>
+</div>
 

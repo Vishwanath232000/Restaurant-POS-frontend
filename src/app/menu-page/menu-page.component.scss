@@ -1,0 +1,43 @@
+@import '../../scss-variables';
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: $screen-background-color; // Ensure the background color is applied to the entire page
+}
+
+.menu-content {
+  display: flex;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 50px;
+}
+.item-container {
+  display: flex;
+  flex-direction: column; // Stack child elements vertically
+  padding: 20px;
+  width: 150px;
+  height: 200px;
+  background-color: rgb(236, 236, 227);
+  border-radius: 5%;
+  gap: 5px; // Add spacing between items
+}
+
+.item-image {
+  width: 50%;
+  height: auto;
+}
+
+.add-to-cart {
+  background-color: $button-background-color;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: $button-border-radius;
+}
+
+.add-to-cart:hover {
+  background-color: $button-hover-color;
+}
+
