@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MenuService } from './menu-service';
 
 
+
 @Component({
   selector: 'app-menu-page',
   standalone: true,
@@ -18,6 +19,12 @@ import { MenuService } from './menu-service';
 
 
 export class MenuPageComponent {
+  isCollapsed: boolean = false;
+
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
+  removeFromCart(Item: any){}
 
   menuData: any;
 
@@ -41,5 +48,27 @@ export class MenuPageComponent {
     }
   }
 
+  // cart_items: Map<string, number> = new Map();
+  cart_items: dict = {};
+  no_of_items:number=0;
 
+  addToCart(Item: any){
+    if (this.cart_items[Item.item_name] == undefined){
+      this.cart_items[Item.item_name] = 1;
+    }
+    else{
+      this.cart_items[Item.item_name] += 1;
+    }
+    this.no_of_items+=1;
+    console.log(this.cart_items);
+    console.log(this.no_of_items);
+  }
+
+
+
+
+}
+
+export interface dict{
+  [item_name: string] : number;
 }

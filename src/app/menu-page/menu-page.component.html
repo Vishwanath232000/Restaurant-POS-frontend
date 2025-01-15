@@ -1,21 +1,22 @@
 <div class="navbar">
-  <a href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
+  <div class="logo" routerLink="/">Coffee</div>
+  <div class="sidebar" [ngClass]="{ 'collapsed': isCollapsed }">
+    <i class="bi bi-cart2" (click)="toggleSidebar()">Toggle Sidebar</i>
+  </div>
+
 </div>
 <div class="menu-page">
 
     <div class="menu-content">
       <div *ngFor="let item of menuData" class="item-container">
+        <div class="test">
         <img [src]="'data:image/jpeg;base64,' + item.item_image" alt="Base64 Image" class="item-image" />
-         <!-- <img src="assets/image.png" alt="No"> -->
+        <!-- <img src="assets/image.png" alt="No"> -->
         <div class="item-name">{{ item.item_name }}</div>
         <div class="item-description">{{ item.item_description }}</div>
         <div class="item-price">{{ item.item_price }}</div>
-        <button class="add-to-cart">Add to cart</button>
+        <button class="add-to-cart" (click)="addToCart(item)">Add to cart</button>
       </div>
     </div>
-
+  </div>
 </div>
-
-
