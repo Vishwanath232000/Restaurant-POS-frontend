@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
+// import { LoginComponent } from '../login/login.component';
 import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { MenuService } from './menu-service';
@@ -10,19 +10,18 @@ import { MenuService } from './menu-service';
 
 
 @Component({
-  selector: 'app-menu-page',
-  standalone: true,
-  imports: [RouterModule, CommonModule,LoginComponent],
-  templateUrl: './menu-page.component.html',
-  styleUrl: './menu-page.component.scss'
+    selector: 'app-menu-page',
+    imports: [RouterModule, CommonModule],
+    templateUrl: './menu-page.component.html',
+    styleUrl: './menu-page.component.scss'
 })
 
 
 export class MenuPageComponent {
   isCollapsed: boolean = false;
 
-  toggleSidebar() {
-    this.isCollapsed = !this.isCollapsed;
+  toggleSidebar(bol: boolean) {
+    this.isCollapsed = bol;
   }
   removeFromCart(Item: any){}
 
@@ -63,6 +62,11 @@ export class MenuPageComponent {
     console.log(this.cart_items);
     console.log(this.no_of_items);
   }
+
+  getCartItemNames(): string[] {
+    return Object.keys(this.cart_items);
+  }
+
 
 
 

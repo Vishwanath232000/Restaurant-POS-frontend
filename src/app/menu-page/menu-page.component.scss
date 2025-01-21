@@ -1,4 +1,4 @@
-@import '../../scss-variables';
+@use '../../scss-variables' as *;
 
 .navbar {
   background-color: #ffffff;
@@ -8,8 +8,45 @@
   height: 75px;
 }
 
-.logo {
 
+/* Sidebar base styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Hidden off-screen by default */
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Sidebar when open */
+.sidebar.open {
+  right: 0; /* Slide in */
+}
+
+/* Sidebar header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Sidebar content */
+.sidebar-content {
+  padding: 1rem;
+  overflow-y: auto;
+}
+.bi-xn{
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.logo {
   padding-left: 50%;
   text-align: center; /* Center the logo text */
   cursor: pointer;
@@ -36,6 +73,9 @@
     padding-left: 10%;
     padding-right: 10%;
   }
+
+
+
 
   .item-container {
     width: 300px; /* Fixed width for each item */

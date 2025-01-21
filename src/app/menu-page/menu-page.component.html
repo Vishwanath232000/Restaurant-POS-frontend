@@ -1,12 +1,32 @@
 <div class="navbar">
   <div class="logo" routerLink="/">Coffee</div>
-  <div class="sidebar" [ngClass]="{ 'collapsed': isCollapsed }">
-    <i class="bi bi-cart2" (click)="toggleSidebar()">Toggle Sidebar</i>
-  </div>
-
+  <i class="bi bi-cart2" (click)="toggleSidebar(true)"></i>
 </div>
-<div class="menu-page">
 
+
+<div class="sidebar" [ngClass]="{'open':isCollapsed}">
+  <div class="sidebar-header">
+    <h1>Cart</h1>
+    <i class="bi bi-x"  (click)="toggleSidebar(false)"></i>
+  </div>
+<div class="sidebar-content" >
+  <div *ngIf="getCartItemNames().length > 0; else emptyCart">
+    <div *ngFor="let itemName of getCartItemNames()" class="cart-item">
+      <div class="cart-item-name">{{ itemName }}</div>
+      <div class="cart-item-quantity">Qty: {{ cart_items[itemName] }}</div>
+    </div>
+    <div class="cart-total">
+      <strong>Total Items: {{ no_of_items }}</strong>
+    </div>
+  </div>
+  <ng-template #emptyCart>
+    <p>Your cart is empty!</p>
+  </ng-template>
+</div>
+</div>
+
+
+<div class="menu-page"  (click)="toggleSidebar(false)">
     <div class="menu-content">
       <div *ngFor="let item of menuData" class="item-container">
         <div class="test">
@@ -15,7 +35,7 @@
         <div class="item-name">{{ item.item_name }}</div>
         <div class="item-description">{{ item.item_description }}</div>
         <div class="item-price">{{ item.item_price }}</div>
-        <button class="add-to-cart" (click)="addToCart(item)">Add to cart</button>
+        <button class="add-to-cart" (click)="addToCart(item)" (click)="toggleSidebar(true)">Add to cart</button>
       </div>
     </div>
   </div>

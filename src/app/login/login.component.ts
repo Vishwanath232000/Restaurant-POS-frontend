@@ -4,11 +4,10 @@ import {RouterModule} from "@angular/router";
 import { MenuPageComponent } from '../menu-page/menu-page.component';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [RouterModule,MenuPageComponent],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+    selector: 'app-login',
+    imports: [RouterModule],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   ngOnInit() {

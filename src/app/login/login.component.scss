@@ -1,4 +1,4 @@
-@import '../../scss-variables';
+@use '../../scss-variables' as *;
 
 .main {
   display: flex;
@@ -8,9 +8,7 @@
   background-color: $screen-background-color; // Coffee color background
 }
 
-.content {
-  // display: flex;
-}
+
 .container {
   display: flex;
   justify-content: center;
