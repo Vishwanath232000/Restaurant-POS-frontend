@@ -116,3 +116,24 @@
   .add-to-cart:hover {
     background-color: $button-hover-color; /* Replace with your variable or color */
   }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .quantity-button {
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .quantity {
+    font-size: 16px;
+    font-weight: bold;
+  }
+

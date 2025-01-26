@@ -23,7 +23,7 @@ export class MenuPageComponent {
   toggleSidebar(bol: boolean) {
     this.isCollapsed = bol;
   }
-  removeFromCart(Item: any){}
+
 
   menuData: any;
 
@@ -34,11 +34,14 @@ export class MenuPageComponent {
     const cachedData = this.menuService.getMenuData();
     if (cachedData) {
       this.menuData = cachedData;
+      // console.log('Menu data fetched from cache:', cachedData);
+
     } else {
       this.menuService.fetchMenuData().subscribe(
         (response) => {
           this.menuData = response;
           this.menuService.setMenuData(response);
+          // console.log('Menu data fetched:', response);
         },
         (error) => {
           console.error('Error fetching menu data:', error);
@@ -53,18 +56,54 @@ export class MenuPageComponent {
 
   addToCart(Item: any){
     if (this.cart_items[Item.item_name] == undefined){
-      this.cart_items[Item.item_name] = 1;
+      this.cart_items[Item.item_name] = [1,Item.item_price,Item.item_price];
     }
     else{
-      this.cart_items[Item.item_name] += 1;
+      this.cart_items[Item.item_name][0] += 1;
+      this.cart_items[Item.item_name][1]=this.cart_items[Item.item_name][0]*Item.item_price
     }
+
     this.no_of_items+=1;
     console.log(this.cart_items);
     console.log(this.no_of_items);
+    this.price+=Item.item_price;
   }
+
+  price:number=0;
+
 
   getCartItemNames(): string[] {
     return Object.keys(this.cart_items);
+  }
+
+  incrementQuantity(item_name:any):void{
+    let price_per_item=this.cart_items[item_name][2];
+
+    this.cart_items[item_name][0]+=1;
+    this.cart_items[item_name][1]+=price_per_item;
+    this.no_of_items+=1;
+    this.price+=price_per_item;
+  }
+
+
+  decrementQuantity(item_name:any):void{
+    let price_per_item=this.cart_items[item_name][2];
+    if (this.cart_items[item_name][0] == 1){
+      delete this.cart_items[item_name];
+    }
+    else{
+
+    this.cart_items[item_name][0]-=1;
+    this.cart_items[item_name][1]-=price_per_item;
+    }
+    this.no_of_items-=1;
+    this.price-=price_per_item;
+  }
+
+  inCart(item_name:string):boolean{
+    // console.log(`Checking if ${item_name} is in cart:`, item_name in this.cart_items);
+    return item_name in this.cart_items;
+
   }
 
 
@@ -74,5 +113,5 @@ export class MenuPageComponent {
 }
 
 export interface dict{
-  [item_name: string] : number;
+  [item_name: string] : [number,number,number];
 }

@@ -13,17 +13,20 @@
   <div *ngIf="getCartItemNames().length > 0; else emptyCart">
     <div *ngFor="let itemName of getCartItemNames()" class="cart-item">
       <div class="cart-item-name">{{ itemName }}</div>
-      <div class="cart-item-quantity">Qty: {{ cart_items[itemName] }}</div>
-    </div>
-    <div class="cart-total">
-      <strong>Total Items: {{ no_of_items }}</strong>
-    </div>
-  </div>
+      <button (click)="decrementQuantity(itemName)" class="quantity-button">-</button>
+            <div class="quantity">{{ cart_items[itemName][0] }}</div>
+            <button (click)="incrementQuantity(itemName)" class="quantity-button">+</button>
+          </div>
+          <div class="cart-total">
+            <strong>Total Price: {{price}}</strong>
+          </div>
+        </div>
+      </div>
   <ng-template #emptyCart>
     <p>Your cart is empty!</p>
   </ng-template>
 </div>
-</div>
+
 
 
 <div class="menu-page"  (click)="toggleSidebar(false)">
@@ -35,8 +38,17 @@
         <div class="item-name">{{ item.item_name }}</div>
         <div class="item-description">{{ item.item_description }}</div>
         <div class="item-price">{{ item.item_price }}</div>
-        <button class="add-to-cart" (click)="addToCart(item)" (click)="toggleSidebar(true)">Add to cart</button>
-      </div>
+        <div *ngIf="inCart(item.item_name); else  quantityControlsDiv" class="quantity-controls">
+            <button (click)="decrementQuantity(item)" class="quantity-button">-</button>
+            <div class="quantity">{{ cart_items[item.item_name][0] }}</div>
+            <button (click)="addToCart(item)" class="quantity-button">+</button>
+          </div>
+        </div>
+        <ng-template #quantityControlsDiv>
+          <p>Checking where the button is</p>
+          <button class="add-to-cart" (click)="addToCart(item)" >Add to cart</button>
+        </ng-template>
     </div>
   </div>
 </div>
+
